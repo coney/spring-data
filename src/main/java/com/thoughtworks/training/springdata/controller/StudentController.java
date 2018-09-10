@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -24,6 +25,16 @@ public class StudentController {
     @RequestMapping(method = RequestMethod.GET)
     List<Student> list() {
         return studentService.list();
+    }
+
+    @GetMapping(params = "name")
+    List<Student> listByName(@RequestParam String name) {
+        return studentService.listByName(name);
+    }
+
+    @GetMapping(params = "max-age")
+    List<Student> listByMaxAge(@RequestParam("max-age") Integer maxAge) {
+        return studentService.listByMaxAge(maxAge);
     }
 
     @PostMapping

@@ -39,4 +39,12 @@ public class StudentService {
         existOne.setName(student.getName());
         return studentRepository.save(existOne);
     }
+
+    public List<Student> listByMaxAge(Integer maxAge) {
+        return studentRepository.findByAgeLessThanEqual(maxAge);
+    }
+
+    public List<Student> listByName(String name) {
+        return studentRepository.findByName(name);
+    }
 }
