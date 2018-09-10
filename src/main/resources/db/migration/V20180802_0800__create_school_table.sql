@@ -1,0 +1,4 @@
+CREATE TABLE school (
+    id int PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100)
+);

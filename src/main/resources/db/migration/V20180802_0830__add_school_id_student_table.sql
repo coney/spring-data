@@ -1,0 +1,1 @@
+ALTER TABLE student ADD COLUMN `school_id` INT UNIQUE DEFAULT NULL ;
