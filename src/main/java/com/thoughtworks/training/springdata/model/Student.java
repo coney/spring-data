@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,6 +22,8 @@ import javax.persistence.Transient;
 @Data
 // Optional
 @Table(name = "student")
+@Where(clause = "deleted = 0")
+@SQLDelete(sql = "UPDATE student SET deleted = 1 WHERE id = ?")
 public class Student {
     @Id
     @GeneratedValue
