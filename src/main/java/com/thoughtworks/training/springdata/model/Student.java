@@ -3,8 +3,10 @@ package com.thoughtworks.training.springdata.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,8 +35,8 @@ public class Student {
     @Transient
     private String comments = "N/A";
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "school_id")
-    @JsonManagedReference
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private School school;
 }

@@ -23,4 +23,7 @@ public class SchoolService {
                 .orElseThrow(NotFoundException::new);
     }
 
+    public void remove(Integer id) {
+        schoolRepository.delete(schoolRepository.findOne(id));
+    }
 }

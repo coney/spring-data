@@ -46,10 +46,12 @@ public class StudentController {
     Student get(@PathVariable Integer id) {
         return studentService.get(id);
     }
+
     @PutMapping("/{id}")
     Student update(@PathVariable Integer id, @RequestBody Student student) {
         return studentService.update(id, student);
     }
+
     @DeleteMapping("/{id}")
     void delete(@PathVariable Integer id) {
         studentService.delete(id);

@@ -3,8 +3,10 @@ package com.thoughtworks.training.springdata.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,7 +25,7 @@ public class School {
     private String name;
 
 
-    @OneToMany(mappedBy = "school")
-    @JsonBackReference
+    @OneToMany(mappedBy = "school", cascade = CascadeType.REMOVE)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Student> students;
 }
